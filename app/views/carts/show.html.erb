@@ -4,6 +4,7 @@
     <h1>My Cart</h1>
   </header>
 
+<% if enhanced_cart.length > 0 %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -25,7 +26,7 @@
             TOTAL:
           </th>
           <th>
-            $<%= cart_subtotal_cents / 100.0 %>
+            $<%= number_with_precision(cart_subtotal_cents / 100.0, precision: 2) %>
           </th>
         </tr>
       </tfoot>
@@ -48,5 +49,10 @@
       <% end %>
     </div>
   </div>
+  <% else %>
+    <div class='alert alert-warning'>
+      <p>Your cart is currently empty. <a href='/'>Start Shopping.</p>
+    </div>
+  <% end %>
 
 </section>
